@@ -37,7 +37,7 @@ class Player
 
   def all_cards
     all_cards = ''
-    @cards.each { |card| all_cards = "@{all_cards} #{card.face}" }
+    @cards.each { |card| all_cards = "#{all_cards} #{card.face}" }
     all_cards
   end
 end

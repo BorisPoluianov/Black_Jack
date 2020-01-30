@@ -5,20 +5,20 @@ class Dealer < Player
 
   def take_card(cards)
     super(cards)
-    puts "Did #{name} take a card?"
+    puts "#{name} take a card."
   end
 
-  def step(step)
+  def move(move)
     if score > 17 || @cards.size == 3
-      puts "#{self.name} missed step."
+      puts "#{self.name} skipped move."
     else
-      take_card(step)
+      take_card(move)
     end
   end
 
   def hide_cards
     hide_cards = ''
-    @cards.each { hide_cards = "#{hide_cards}?" }
+    @cards.each { hide_cards << '🂠 ' }
     hide_cards
   end
 end
