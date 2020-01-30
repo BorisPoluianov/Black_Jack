@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class Interface
   def initialize
     @controller = Controller.new(new_user)
   end
-
 
   def run
     new_game
@@ -65,14 +66,14 @@ class Interface
   end
 
   def game_over
-    puts "You can not play no more. Your money: $#{@user.bank}. Dealers money: $#{@dealer.bank}"
+    puts "Game over. You have: $#{@user.bank}. Dealer has: $#{@dealer.bank}."
     exit
   end
 
   def show_info
     puts '========= INFO ========='
-    puts "#{@controller.user.score} points"
-    puts "Bet = $#{@controller.bank.money}"
+    puts "#{@controller.user.score} points|" \
+         "Bet = $#{@controller.bank.money}"
     puts "#{@controller.user.name} $#{@controller.user.bank}"
     puts "#{@controller.dealer.name} $#{@controller.dealer.bank}"
     puts "Your cards: #{@controller.user.all_cards}"
@@ -82,12 +83,14 @@ class Interface
   def end_result_info
     puts '========= GAME RESULTS ========='
     puts "Winner: #{winner_name}"
-    puts "Dealer's cards: #{@controller.dealer.all_cards} & points: #{@controller.dealer.score}"
-    puts "Your cards: #{@controller.user.all_cards} & points: #{@controller.user.score}"
+    puts "Dealer's cards: #{@controller.dealer.all_cards} |" \
+         "points: #{@controller.dealer.score}"
+    puts "Your cards: #{@controller.user.all_cards} |" \
+         "points: #{@controller.user.score}"
   end
 
   def one_more_game
-    puts "Play again? y/n"
+    puts 'Play again? y/n'
     case gets.chomp
     when 'y'
       new_game

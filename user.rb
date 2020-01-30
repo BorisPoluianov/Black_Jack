@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < Player
   def take_card(cards)
     card = super(cards)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Controller
   attr_reader :dealer, :bank, :user, :deck
 

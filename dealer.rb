@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Dealer < Player
   def initialize(name = 'Dealer')
     super(name)
@@ -10,7 +12,7 @@ class Dealer < Player
 
   def move(move)
     if score > 17 || @cards.size == 3
-      puts "#{self.name} skipped move."
+      puts "#{name} skipped move."
     else
       take_card(move)
     end
@@ -18,7 +20,7 @@ class Dealer < Player
 
   def hide_cards
     hide_cards = ''
-    @cards.each { hide_cards << '🂠 ' }
+    @cards.each { hide_cards += '🂠 ' }
     hide_cards
   end
 end
