@@ -11,7 +11,7 @@ class Dealer < Player
   end
 
   def move(move)
-    if score > 17 || @cards.size == 3
+    if score > 17 || @hand.cards.size == 3
       puts "#{name} skipped move."
     else
       take_card(move)
@@ -20,7 +20,7 @@ class Dealer < Player
 
   def hide_cards
     hide_cards = ''
-    @cards.each { hide_cards += '🂠 ' }
+    @hand.cards.each { hide_cards += '🂠 ' }
     hide_cards
   end
 end

@@ -14,12 +14,12 @@ class Controller
   end
 
   def clear_players_cards
-    @user.cards = []
-    @dealer.cards = []
+    @user.hand.cards = []
+    @dealer.hand.cards = []
   end
 
   def card_limit?(player)
-    player.cards.size > 2
+    player.hand.cards.size > 2
   end
 
   def score_limit?(player)

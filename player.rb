@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class Player
-  attr_reader :name
+  attr_reader :name, :hand
   attr_accessor :bank, :cards
 
   def initialize(name)
     @name = name
     @bank = 100
-    @cards = []
+    @hand = Hand.new
   end
 
   def make_bet(bank)
@@ -20,26 +20,16 @@ class Player
   end
 
   def take_card(deck)
-    card = deck.cards.sample
-    @cards << card
-    deck.cards.delete(card)
+    @hand.take_card(deck)
   end
 
   def score
-    @score = 0
-    @cards.each do |card|
-      @score += if @score + card.value.max > 21
-                  card.value.min
-                else
-                  card.value.max
-                end
-    end
-    @score
+    @hand.score
   end
 
   def all_cards
     all_cards = ''
-    @cards.each { |card| all_cards = "#{all_cards} #{card.face}" }
+    @hand.cards.each { |card| all_cards = "#{all_cards} #{card.face}" }
     all_cards
   end
 end
